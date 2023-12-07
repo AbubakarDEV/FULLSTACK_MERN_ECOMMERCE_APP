@@ -44,4 +44,13 @@ app.get("/products", async (req, res) => {
   }
 });
 
+app.delete("/delete-products", async (req, res) => {
+  let productList = await ProductModel.find();
+  if (productList.length > 0) {
+    res.send(productList);
+  } else {
+    res.send({ result: "No product found" });
+  }
+});
+
 app.listen(5000);
